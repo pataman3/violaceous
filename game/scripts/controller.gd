@@ -3,7 +3,7 @@ extends Sprite
 # children of this node
 onready var anim = get_node("anim")
 
-# horiztonal velocity
+# horizontal velocity
 var x_vel = 0
 
 # default walking/running speeds
