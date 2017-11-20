@@ -26,7 +26,7 @@ func _ready():
 
 # called every frame
 func _process(delta):
-	move_local_x(x_vel);
+	move_local_x(x_vel)
 
 
 # called whenever an input is recieved
