@@ -5,7 +5,7 @@ onready var animator = get_node("animator")
 onready var sprite = get_node("sprite")
 
 # gravity is the speed the player falls in pixels/sec
-var GRAVITY = 10;
+var GRAVITY = 10
 
 # velocity
 var velocity = Vector2(0, GRAVITY)
@@ -30,7 +30,7 @@ func _ready():
 
 # called every frame
 func _process(delta):
-	if (is_colliding()):
+	if is_colliding():
         move(get_collision_normal().slide(velocity))
 
 	move(velocity)
@@ -72,8 +72,8 @@ func _joystick_input(event):
 
 # sets the animation based on Ramona's velocity
 func _set_anim():
-	var current_anim = animator.get_current_animation()
 	
+#	var current_anim = animator.get_current_animation()
 #	var next_anim = "ramona_run"
 #	if -WALK_SPEED <= x_vel and x_vel <= WALK_SPEED:
 #		next_anim = "ramona_walk"
