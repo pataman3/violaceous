@@ -1,26 +1,201 @@
-[gd_scene load_steps=12 format=1]
+[gd_scene load_steps=18 format=1]
 
 [ext_resource path="res://scripts/controller.gd" type="Script" id=1]
-[ext_resource path="res://images/characters/rin/running.png" type="Texture" id=2]
-[ext_resource path="res://images/environments/foliage/grass/grass.png" type="Texture" id=3]
-[ext_resource path="res://scripts/lightning.gd" type="Script" id=4]
-[ext_resource path="res://images/environments/weather/rain.png" type="Texture" id=5]
+[ext_resource path="res://images/characters/rin/idle.png" type="Texture" id=2]
+[ext_resource path="res://images/characters/rin/run.png" type="Texture" id=3]
+[ext_resource path="res://images/characters/rin/turn.png" type="Texture" id=4]
+[ext_resource path="res://images/characters/rin/walk.png" type="Texture" id=5]
+[ext_resource path="res://images/environments/foliage/grass/grass.png" type="Texture" id=6]
+[ext_resource path="res://scripts/lightning.gd" type="Script" id=7]
+[ext_resource path="res://images/environments/weather/rain.png" type="Texture" id=8]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 17, 21 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 
+resource/name = "idle"
+length = 0.1
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:texture")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprite:hframes")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("sprite:offset")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("sprite:frame")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 0, 0.1 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 0 ]
+}
+
+[sub_resource type="Animation" id=3]
+
+resource/name = "run"
 length = 0.6
 loop = true
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("sprite:frame")
+tracks/0/path = NodePath("sprite:texture")
 tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprite:hframes")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("sprite:offset")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("sprite:frame")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 0, 0.6 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 5 ]
+}
+
+[sub_resource type="Animation" id=9]
+
+resource/name = "turn"
+length = 0.5
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:texture")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprite:hframes")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ 5 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("sprite:offset")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("sprite:frame")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 0, 0.5 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 4 ]
+}
+
+[sub_resource type="Animation" id=4]
+
+resource/name = "walk"
+length = 0.6
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:texture")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprite:hframes")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("sprite:offset")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -3 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("sprite:frame")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
 "times": FloatArray( 0, 0.6 ),
 "transitions": FloatArray( 1, 1 ),
 "update": 0,
@@ -32,7 +207,7 @@ tracks/0/keys = {
 custom_solver_bias = 0.0
 segments = Vector2Array( -3.96428, 3.93499, -6.02405, -9.54721, -6.02405, -9.54721, 2.58958, -12.9178, 2.58958, -12.9178, 3.15133, -20.0334, 3.15133, -20.0334, 11.5777, -20.0334, 11.5777, -20.0334, 11.5777, -10.109, 11.5777, -10.109, 17.9443, -16.4756, 17.9443, -16.4756, 19.6296, -13.105, 19.6296, -13.105, 16.6335, -4.49139, 16.6335, -4.49139, 10.6414, 0.18993, 10.6414, 0.18993, 6.14738, -1.86985, 6.14738, -1.86985, 11.3905, 14.7956, 11.3905, 14.7956, 16.259, 16.2937, 16.259, 16.2937, 13.4502, 19.477, 13.4502, 19.477, -11.8289, 19.2897, -11.8289, 19.2897, -16.1357, 14.0466, -16.1357, 14.0466, -14.2632, 4.87125, -14.2632, 4.87125, -3.96428, 3.93499 )
 
-[sub_resource type="CanvasItemShader" id=1]
+[sub_resource type="CanvasItemShader" id=6]
 
 _code = {
 "fragment": "COLOR = color(COLOR.rgb / 1.5, COLOR.a);",
@@ -43,12 +218,12 @@ _code = {
 "vertex_ofs": 0
 }
 
-[sub_resource type="CanvasItemMaterial" id=2]
+[sub_resource type="CanvasItemMaterial" id=7]
 
-shader/shader = SubResource( 1 )
+shader/shader = SubResource( 6 )
 shader/shading_mode = 0
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=8]
 
 custom_solver_bias = 0.0
 extents = Vector2( 64, 3 )
@@ -59,10 +234,9 @@ transform/scale = Vector2( 10, 10 )
 
 [node name="test_character" type="KinematicBody2D" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( 50, 35 )
 input/pickable = false
-shapes/0/shape = SubResource( 3 )
+shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 2, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -78,29 +252,32 @@ WALK_SPEED = 3.3
 [node name="sprite" type="Sprite" parent="test_character"]
 
 texture = ExtResource( 2 )
-hframes = 6
-frame = 1
 
 [node name="animator" type="AnimationPlayer" parent="test_character"]
 
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/running = SubResource( 4 )
+anims/idle = SubResource( 2 )
+anims/run = SubResource( 3 )
+anims/turn = SubResource( 9 )
+anims/walk = SubResource( 4 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
-autoplay = "running"
+autoplay = "idle"
 
 [node name="collision" type="CollisionShape2D" parent="test_character"]
 
 transform/pos = Vector2( 2, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
 [node name="hitbox" type="Area2D" parent="test_character"]
 
+editor/display_folded = true
+visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 5 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -140,13 +317,13 @@ drag_margin/bottom = 0.2
 [node name="environment" type="Node2D" parent="."]
 
 editor/display_folded = true
+visibility/visible = false
 
 [node name="background" type="Node2D" parent="environment"]
 
 editor/display_folded = true
-material/material = SubResource( 2 )
+material/material = SubResource( 7 )
 transform/pos = Vector2( 50, 42 )
-transform/scale = Vector2( 1, 1 )
 z/z = -1
 __meta__ = {
 "_edit_group_": true
@@ -156,19 +333,18 @@ __meta__ = {
 
 material/use_parent = true
 transform/pos = Vector2( -32, 0 )
-texture = ExtResource( 3 )
+texture = ExtResource( 6 )
 
 [node name="right_sprite" type="Sprite" parent="environment/background"]
 
 material/use_parent = true
 transform/pos = Vector2( 32, 0 )
-texture = ExtResource( 3 )
+texture = ExtResource( 6 )
 
 [node name="foreground" type="Node2D" parent="environment"]
 
 editor/display_folded = true
 transform/pos = Vector2( 60, 45 )
-transform/scale = Vector2( 1, 1 )
 z/z = 1
 __meta__ = {
 "_edit_group_": true
@@ -177,20 +353,19 @@ __meta__ = {
 [node name="left_sprite" type="Sprite" parent="environment/foreground"]
 
 transform/pos = Vector2( -32, 0 )
-texture = ExtResource( 3 )
+texture = ExtResource( 6 )
 
 [node name="right_sprite" type="Sprite" parent="environment/foreground"]
 
 transform/pos = Vector2( 32, 0 )
-texture = ExtResource( 3 )
+texture = ExtResource( 6 )
 
 [node name="physics" type="StaticBody2D" parent="environment"]
 
 editor/display_folded = true
 transform/pos = Vector2( 60, 45 )
-transform/scale = Vector2( 1, 1 )
 input/pickable = false
-shapes/0/shape = SubResource( 6 )
+shapes/0/shape = SubResource( 8 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 14 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -206,14 +381,14 @@ __meta__ = {
 [node name="collision" type="CollisionShape2D" parent="environment/physics"]
 
 transform/pos = Vector2( 0, 14 )
-shape = SubResource( 6 )
+shape = SubResource( 8 )
 trigger = false
 _update_shape_index = 0
 
 [node name="lightning_storm" type="Node2D" parent="."]
 
 editor/display_folded = true
-transform/scale = Vector2( 1, 1 )
+visibility/visible = false
 __meta__ = {
 "_edit_group_": true
 }
@@ -221,9 +396,8 @@ __meta__ = {
 [node name="lightning" type="CanvasModulate" parent="lightning_storm"]
 
 editor/display_folded = true
-transform/scale = Vector2( 1, 1 )
 color = Color( 0.394531, 0.394531, 0.394531, 1 )
-script/script = ExtResource( 4 )
+script/script = ExtResource( 7 )
 darkness_tint = Color( 0.4, 0.4, 0.4, 1 )
 frequency = 10
 
@@ -240,14 +414,13 @@ transform/pos = Vector2( 82.7508, 2.12864 )
 
 [node name="foreground_rain" type="Particles2D" parent="lightning_storm/rain"]
 
-transform/scale = Vector2( 1, 1 )
 z/z = 1
 config/amount = 40
 config/lifetime = 1.0
 config/time_scale = 2.0
 config/process_mode = 1
 config/half_extents = Vector2( 100, 10 )
-config/texture = ExtResource( 5 )
+config/texture = ExtResource( 8 )
 params/direction = 315.0
 params/spread = 0.0
 params/linear_velocity = 90.0
@@ -268,14 +441,13 @@ color/color = Color( 0.714844, 0.714844, 0.714844, 1 )
 
 [node name="background_rain" type="Particles2D" parent="lightning_storm/rain"]
 
-transform/scale = Vector2( 1, 1 )
 z/z = -1
 config/amount = 40
 config/lifetime = 1.0
 config/time_scale = 2.0
 config/process_mode = 1
 config/half_extents = Vector2( 100, 10 )
-config/texture = ExtResource( 5 )
+config/texture = ExtResource( 8 )
 params/direction = 315.0
 params/spread = 0.0
 params/linear_velocity = 90.0
