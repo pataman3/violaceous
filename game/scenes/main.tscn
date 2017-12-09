@@ -1,9 +1,9 @@
 [gd_scene load_steps=18 format=1]
 
 [ext_resource path="res://scripts/controller.gd" type="Script" id=1]
-[ext_resource path="res://images/characters/rin/turn.png" type="Texture" id=2]
-[ext_resource path="res://images/characters/rin/idle.png" type="Texture" id=3]
-[ext_resource path="res://images/characters/rin/run.png" type="Texture" id=4]
+[ext_resource path="res://images/characters/rin/idle.png" type="Texture" id=2]
+[ext_resource path="res://images/characters/rin/run.png" type="Texture" id=3]
+[ext_resource path="res://images/characters/rin/turn.png" type="Texture" id=4]
 [ext_resource path="res://images/characters/rin/walk.png" type="Texture" id=5]
 [ext_resource path="res://images/environments/foliage/grass/grass.png" type="Texture" id=6]
 [ext_resource path="res://scripts/lightning.gd" type="Script" id=7]
@@ -12,7 +12,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 16, 21 )
+extents = Vector2( 8, 21 )
 
 [sub_resource type="Animation" id=2]
 
@@ -28,7 +28,7 @@ tracks/0/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 3 ) ]
+"values": [ ExtResource( 2 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -105,7 +105,7 @@ tracks/0/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 4 ) ]
+"values": [ ExtResource( 3 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -162,7 +162,7 @@ tracks/5/keys = {
 
 resource/name = "turn"
 length = 0.5
-loop = true
+loop = false
 step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("sprite:texture")
@@ -172,7 +172,7 @@ tracks/0/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 2 ) ]
+"values": [ ExtResource( 4 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:hframes")
@@ -311,14 +311,10 @@ tracks/6/keys = {
 "values": [ Vector2Array( 1.59164, -17.6496, 9.1137, -17.6496, 9.1137, -9.23209, 6.60635, -6.72474, 15.0239, 3.84196, 13.412, 5.63292, 5.88996, -0.277264, 8.21821, 9.21486, 11.2629, 14.2296, 14.1284, 20.677, -9.33324, 20.4979, -11.4824, 17.6324, -3.60215, 10.1103, -3.60215, 4.91653, -9.51234, 2.40918, 1.59164, -11.2021 ) ]
 }
 
-<<<<<<< HEAD
-[sub_resource type="ConcavePolygonShape2D" id=10]
-=======
 [sub_resource type="ConcavePolygonShape2D" id=6]
->>>>>>> ee84ac965a33a1e7c424d912b6370d4e94d8c096
 
 custom_solver_bias = 0.0
-segments = Vector2Array( 1.83714, -19.4616, 1.83714, -10.3937, 1.83714, -10.3937, 5.53147, -5.35602, 5.53147, -5.35602, 9.72957, 0.85717, 9.72957, 0.85717, 6.20317, 4.88735, 6.20317, 4.88735, 14.2635, 18.4892, 14.2635, 18.4892, 13.256, 20.5043, 13.256, 20.5043, -8.57415, 20.5043, -8.57415, 20.5043, -9.07792, 13.9552, -9.07792, 13.9552, -16.6345, 15.8024, -16.6345, 15.8024, -15.2911, 8.0779, -15.2911, 8.0779, -8.91, 7.57413, -8.91, 7.57413, -8.74207, -0.150375, -8.74207, -0.150375, -16.8024, 2.70433, -16.8024, 2.70433, -16.8024, -1.15792, -16.8024, -1.15792, -10.4213, -6.36356, -10.4213, -6.36356, -10.4213, -13.5843, -10.4213, -13.5843, -4.37605, -19.4616, -4.37605, -19.4616, 1.83714, -19.4616 )
+segments = Vector2Array( -3.79556, -20.789, 3.53728, -20.9557, 3.53728, -20.9557, 3.53728, -12.9562, 3.53728, -12.9562, 8.20363, 4.04262, 8.20363, 4.04262, 4.53721, 4.20927, 4.53721, 4.20927, 5.53715, 18.0417, 5.53715, 18.0417, 8.03698, 20.8748, 8.03698, 20.8748, -8.29525, 20.8748, -8.29525, 20.8748, -5.96207, 4.37593, -5.96207, 4.37593, -8.29525, 3.54265, -8.29525, 3.54265, -7.62863, -9.62312, -7.62863, -9.62312, -3.79556, -13.2895, -3.79556, -13.2895, -3.79556, -20.789 )
 
 [sub_resource type="CanvasItemShader" id=7]
 
@@ -350,7 +346,7 @@ transform/scale = Vector2( 10, 10 )
 transform/pos = Vector2( 50, 35 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, -1, 0 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -365,7 +361,6 @@ WALK_SPEED = 3.3
 [node name="sprite" type="Sprite" parent="test_character"]
 
 texture = ExtResource( 2 )
-hframes = 5
 
 [node name="animator" type="AnimationPlayer" parent="test_character"]
 
@@ -383,8 +378,6 @@ autoplay = "idle"
 
 [node name="collision" type="CollisionShape2D" parent="test_character"]
 
-visibility/visible = false
-transform/pos = Vector2( -1, 0 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
@@ -392,11 +385,7 @@ _update_shape_index = 0
 [node name="hitbox" type="Area2D" parent="test_character"]
 
 input/pickable = true
-<<<<<<< HEAD
-shapes/0/shape = SubResource( 10 )
-=======
 shapes/0/shape = SubResource( 6 )
->>>>>>> ee84ac965a33a1e7c424d912b6370d4e94d8c096
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -407,7 +396,7 @@ angular_damp = 1.0
 [node name="hitbox_collision" type="CollisionPolygon2D" parent="test_character/hitbox"]
 
 build_mode = 1
-polygon = Vector2Array( 1.83714, -19.4616, 1.83714, -10.3937, 5.53147, -5.35602, 9.72957, 0.85717, 6.20317, 4.88735, 14.2635, 18.4892, 13.256, 20.5043, -8.57415, 20.5043, -9.07792, 13.9552, -16.6345, 15.8024, -15.2911, 8.0779, -8.91, 7.57413, -8.74207, -0.150375, -16.8024, 2.70433, -16.8024, -1.15792, -10.4213, -6.36356, -10.4213, -13.5843, -4.37605, -19.4616 )
+polygon = Vector2Array( -3.79556, -20.789, 3.53728, -20.9557, 3.53728, -12.9562, 8.20363, 4.04262, 4.53721, 4.20927, 5.53715, 18.0417, 8.03698, 20.8748, -8.29525, 20.8748, -5.96207, 4.37593, -8.29525, 3.54265, -7.62863, -9.62312, -3.79556, -13.2895 )
 shape_range = Vector2( 0, 0 )
 trigger = false
 
@@ -434,11 +423,7 @@ drag_margin/bottom = 0.2
 
 [node name="environment" type="Node2D" parent="."]
 
-<<<<<<< HEAD
 visibility/visible = false
-=======
-editor/display_folded = true
->>>>>>> ee84ac965a33a1e7c424d912b6370d4e94d8c096
 
 [node name="background" type="Node2D" parent="environment"]
 
@@ -509,6 +494,7 @@ _update_shape_index = 0
 [node name="lightning_storm" type="Node2D" parent="."]
 
 editor/display_folded = true
+visibility/visible = false
 __meta__ = {
 "_edit_group_": true
 }
