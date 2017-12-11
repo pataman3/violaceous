@@ -343,6 +343,7 @@ transform/scale = Vector2( 10, 10 )
 
 [node name="test_character" type="KinematicBody2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 50, 35 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
@@ -422,8 +423,6 @@ drag_margin/right = 0.2
 drag_margin/bottom = 0.2
 
 [node name="environment" type="Node2D" parent="."]
-
-visibility/visible = false
 
 [node name="background" type="Node2D" parent="environment"]
 
