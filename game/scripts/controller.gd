@@ -17,6 +17,10 @@ var WALK_MIN = 1
 # currently supported control inputs
 var supported_inputs = [InputEvent.KEY, InputEvent.JOYSTICK_MOTION]
 
+# keyboard inputs for actions
+var move_right_keys = [KEY_D, KEY_RIGHT]
+var move_left_keys  = [KEY_A, KEY_LEFT]
+var run_keys        = [KEY_SHIFT]
 
 
 # called on start
@@ -41,27 +45,36 @@ func _input(event):
 		_joystick_input(event)
 	_set_anim()
 
-
+# returns true if any of the keys in key_array are pressed
+func _is_key_pressed(key_array):
+	for key in key_array:
+		if Input.is_key_pressed(key):
+			return true
+	return false
+	
 # called by _input when a key input is recieved
 func _key_input(event):
 	# ignore repeating keys
 	if event.is_echo():
 		return
-	# call event.scancode to get the key just pressed / released
-	if Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_RIGHT):
-		x_velocity = WALK_SPEED
-	elif Input.is_key_pressed(KEY_A) or Input.is_key_pressed(KEY_LEFT):
-		x_velocity = -WALK_SPEED
-	else:
-		x_velocity = 0
 	
-	if Input.is_key_pressed(KEY_SHIFT) and x_velocity != 0:
+	# call event.scancode to get the key just pressed / released
+	# call event.pressed to get whether the key was pressed or released
+	
+	# check if any movement keys are pressed
+	x_velocity = 0 # don't move if none are pressed
+	if _is_key_pressed(move_right_keys):
+		x_velocity = WALK_SPEED
+	if _is_key_pressed(move_left_keys):
+		x_velocity = -WALK_SPEED
+	if _is_key_pressed(run_keys):
 		x_velocity = RUN_SPEED * sign(x_velocity)
 
 
 # called by _input when a joystick input is recieved
 func _joystick_input(event):
 	x_velocity = Input.get_joy_axis(0, JOY_AXIS_0) * RUN_SPEED
+	# don't move with input below the joystick theshold
 	if abs(x_velocity) < WALK_MIN:
 		x_velocity = 0
 
