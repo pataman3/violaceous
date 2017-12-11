@@ -79,18 +79,19 @@ func _joystick_input(event):
 		x_velocity = 0
 
 
-# sets the animation based on Ramona's velocity
+# sets the animation based on rin's state
 func _set_anim():
+	# determine which movement animation to use
+	var anim = "run"
+	if -WALK_SPEED <= x_velocity and x_velocity <= WALK_SPEED:
+		anim = "walk"
+	if x_velocity == 0:
+		anim = "idle"
 	
-#	var current_anim = animator.get_current_animation()
-#	var next_anim = "ramona_run"
-#	if -WALK_SPEED <= x_vel and x_vel <= WALK_SPEED:
-#		next_anim = "ramona_walk"
-#	if x_vel == 0:
-#		next_anim = "ramona_idle"
-#	
-#	if current_anim != next_anim:
-#		animator.play(next_anim)
+	# only play the animation if it's not already playing
+	if animator.get_current_animation() != anim:
+		animator.play(anim)
 	
+	# face the correct direction
 	if x_velocity != 0:
 		sprite.set_flip_h(x_velocity < 0)

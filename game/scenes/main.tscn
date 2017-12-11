@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=1]
+[gd_scene load_steps=14 format=1]
 
 [ext_resource path="res://scripts/controller.gd" type="Script" id=1]
 [ext_resource path="res://images/characters/rin/idle.png" type="Texture" id=2]
@@ -6,8 +6,6 @@
 [ext_resource path="res://images/characters/rin/turn.png" type="Texture" id=4]
 [ext_resource path="res://images/characters/rin/walk.png" type="Texture" id=5]
 [ext_resource path="res://images/environments/foliage/grass/grass.png" type="Texture" id=6]
-[ext_resource path="res://scripts/lightning.gd" type="Script" id=7]
-[ext_resource path="res://images/environments/weather/rain.png" type="Texture" id=8]
 
 [sub_resource type="Animation" id=2]
 
@@ -16,7 +14,7 @@ length = 0.1
 loop = true
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("../Node2D/sprite:texture")
+tracks/0/path = NodePath("sprite:texture")
 tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = {
@@ -26,7 +24,7 @@ tracks/0/keys = {
 "values": [ ExtResource( 2 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../Node2D/sprite:hframes")
+tracks/1/path = NodePath("sprite:hframes")
 tracks/1/interp = 1
 tracks/1/imported = false
 tracks/1/keys = {
@@ -36,7 +34,7 @@ tracks/1/keys = {
 "values": [ 1 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../Node2D/sprite:offset")
+tracks/2/path = NodePath("sprite:offset")
 tracks/2/interp = 1
 tracks/2/imported = false
 tracks/2/keys = {
@@ -46,7 +44,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("../Node2D/sprite:frame")
+tracks/3/path = NodePath("sprite:frame")
 tracks/3/interp = 1
 tracks/3/imported = false
 tracks/3/keys = {
@@ -73,7 +71,7 @@ length = 0.6
 loop = true
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("../Node2D/sprite:texture")
+tracks/0/path = NodePath("sprite:texture")
 tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = {
@@ -83,7 +81,7 @@ tracks/0/keys = {
 "values": [ ExtResource( 3 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../Node2D/sprite:hframes")
+tracks/1/path = NodePath("sprite:hframes")
 tracks/1/interp = 1
 tracks/1/imported = false
 tracks/1/keys = {
@@ -93,7 +91,7 @@ tracks/1/keys = {
 "values": [ 6 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../Node2D/sprite:offset")
+tracks/2/path = NodePath("sprite:offset")
 tracks/2/interp = 1
 tracks/2/imported = false
 tracks/2/keys = {
@@ -103,7 +101,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("../Node2D/sprite:frame")
+tracks/3/path = NodePath("sprite:frame")
 tracks/3/interp = 1
 tracks/3/imported = false
 tracks/3/keys = {
@@ -120,7 +118,7 @@ length = 0.5
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("../Node2D/sprite:texture")
+tracks/0/path = NodePath("sprite:texture")
 tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = {
@@ -130,7 +128,7 @@ tracks/0/keys = {
 "values": [ ExtResource( 4 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../Node2D/sprite:hframes")
+tracks/1/path = NodePath("sprite:hframes")
 tracks/1/interp = 1
 tracks/1/imported = false
 tracks/1/keys = {
@@ -140,7 +138,7 @@ tracks/1/keys = {
 "values": [ 5 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../Node2D/sprite:offset")
+tracks/2/path = NodePath("sprite:offset")
 tracks/2/interp = 1
 tracks/2/imported = false
 tracks/2/keys = {
@@ -150,7 +148,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("../Node2D/sprite:frame")
+tracks/3/path = NodePath("sprite:frame")
 tracks/3/interp = 1
 tracks/3/imported = false
 tracks/3/keys = {
@@ -176,7 +174,7 @@ length = 0.6
 loop = true
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("../Node2D/sprite:texture")
+tracks/0/path = NodePath("sprite:texture")
 tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = {
@@ -186,7 +184,7 @@ tracks/0/keys = {
 "values": [ ExtResource( 5 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../Node2D/sprite:hframes")
+tracks/1/path = NodePath("sprite:hframes")
 tracks/1/interp = 1
 tracks/1/imported = false
 tracks/1/keys = {
@@ -196,7 +194,7 @@ tracks/1/keys = {
 "values": [ 6 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../Node2D/sprite:offset")
+tracks/2/path = NodePath("sprite:offset")
 tracks/2/interp = 1
 tracks/2/imported = false
 tracks/2/keys = {
@@ -206,7 +204,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0, -3 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("../Node2D/sprite:frame")
+tracks/3/path = NodePath("sprite:frame")
 tracks/3/interp = 1
 tracks/3/imported = false
 tracks/3/keys = {
@@ -226,7 +224,7 @@ tracks/4/keys = {
 "values": [ Vector2Array( 1.59164, -17.6496, 9.1137, -17.6496, 9.1137, -9.23209, 6.60635, -6.72474, 15.0239, 3.84196, 13.412, 5.63292, 5.88996, -0.277264, 8.21821, 9.21486, 11.2629, 14.2296, 14.1284, 20.677, -9.33324, 20.4979, -11.4824, 17.6324, -3.60215, 10.1103, -3.60215, 4.91653, -9.51234, 2.40918, 1.59164, -11.2021 ) ]
 }
 
-[sub_resource type="ConcavePolygonShape2D" id=10]
+[sub_resource type="ConcavePolygonShape2D" id=9]
 
 custom_solver_bias = 0.0
 segments = Vector2Array( -3.79556, -20.789, 3.53728, -20.9557, 3.53728, -20.9557, 3.53728, -12.9562, 3.53728, -12.9562, 8.20363, 4.04262, 8.20363, 4.04262, 4.53721, 4.20927, 4.53721, 4.20927, 5.53715, 18.0417, 5.53715, 18.0417, 8.03698, 20.8748, 8.03698, 20.8748, -8.29525, 20.8748, -8.29525, 20.8748, -5.96207, 4.37593, -5.96207, 4.37593, -8.29525, 3.54265, -8.29525, 3.54265, -7.62863, -9.62312, -7.62863, -9.62312, -3.79556, -13.2895, -3.79556, -13.2895, -3.79556, -20.789 )
@@ -249,22 +247,22 @@ shader/shading_mode = 0
 
 [node name="main" type="Node2D"]
 
-transform/scale = Vector2( 10, 10 )
+transform/scale = Vector2( 5, 5 )
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="rin" type="Node2D" parent="."]
 
 transform/pos = Vector2( 50, 35 )
 transform/scale = Vector2( 1, 1 )
 script/script = ExtResource( 1 )
-RUN_SPEED = 0.7
-WALK_SPEED = 0.33
+RUN_SPEED = 1.3
+WALK_SPEED = 0.9
 
-[node name="sprite" type="Sprite" parent="Node2D"]
+[node name="sprite" type="Sprite" parent="rin"]
 
 transform/scale = Vector2( 1, 1 )
 texture = ExtResource( 2 )
 
-[node name="animator" type="AnimationPlayer" parent="Node2D"]
+[node name="animator" type="AnimationPlayer" parent="rin"]
 
 playback/process_mode = 1
 playback/default_blend_time = 0.0
@@ -278,11 +276,12 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = "idle"
 
-[node name="hitbox" type="Area2D" parent="Node2D"]
+[node name="hitbox" type="Area2D" parent="rin"]
 
+editor/display_folded = true
 transform/scale = Vector2( 1, 1 )
 input/pickable = true
-shapes/0/shape = SubResource( 10 )
+shapes/0/shape = SubResource( 9 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -290,14 +289,14 @@ gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 
-[node name="hitbox_collision" type="CollisionPolygon2D" parent="Node2D/hitbox"]
+[node name="hitbox_collision" type="CollisionPolygon2D" parent="rin/hitbox"]
 
 build_mode = 1
 polygon = Vector2Array( -3.79556, -20.789, 3.53728, -20.9557, 3.53728, -12.9562, 8.20363, 4.04262, 4.53721, 4.20927, 5.53715, 18.0417, 8.03698, 20.8748, -8.29525, 20.8748, -5.96207, 4.37593, -8.29525, 3.54265, -7.62863, -9.62312, -3.79556, -13.2895 )
 shape_range = Vector2( 0, 0 )
 trigger = false
 
-[node name="camera" type="Camera2D" parent="Node2D"]
+[node name="camera" type="Camera2D" parent="rin"]
 
 transform/pos = Vector2( 0.200001, 0 )
 transform/scale = Vector2( 1, 1 )
@@ -363,87 +362,5 @@ texture = ExtResource( 6 )
 
 transform/pos = Vector2( 32, 0 )
 texture = ExtResource( 6 )
-
-[node name="lightning_storm" type="Node2D" parent="."]
-
-visibility/visible = false
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="lightning" type="CanvasModulate" parent="lightning_storm"]
-
-editor/display_folded = true
-color = Color( 0.394531, 0.394531, 0.394531, 1 )
-script/script = ExtResource( 7 )
-darkness_tint = Color( 0.4, 0.4, 0.4, 1 )
-frequency = 10
-
-[node name="timer" type="Timer" parent="lightning_storm/lightning"]
-
-process_mode = 1
-wait_time = 1.0
-one_shot = false
-autostart = true
-
-[node name="rain" type="Node2D" parent="lightning_storm"]
-
-editor/display_folded = true
-transform/pos = Vector2( 82.7508, 2.12864 )
-
-[node name="foreground_rain" type="Particles2D" parent="lightning_storm/rain"]
-
-z/z = 1
-config/amount = 40
-config/lifetime = 1.0
-config/time_scale = 2.0
-config/process_mode = 1
-config/half_extents = Vector2( 100, 10 )
-config/texture = ExtResource( 8 )
-params/direction = 315.0
-params/spread = 0.0
-params/linear_velocity = 90.0
-params/spin_velocity = 0.0
-params/orbit_velocity = 0.0
-params/gravity_direction = 0.0
-params/gravity_strength = 9.8
-params/radial_accel = 0.0
-params/tangential_accel = 0.0
-params/damping = 0.0
-params/initial_angle = 0.0
-params/initial_size = 1.0
-params/final_size = 1.0
-params/hue_variation = 0.0
-params/anim_speed_scale = 1.0
-params/anim_initial_pos = 0.0
-color/color = Color( 0.714844, 0.714844, 0.714844, 1 )
-
-[node name="background_rain" type="Particles2D" parent="lightning_storm/rain"]
-
-z/z = -1
-config/amount = 40
-config/lifetime = 1.0
-config/time_scale = 2.0
-config/process_mode = 1
-config/half_extents = Vector2( 100, 10 )
-config/texture = ExtResource( 8 )
-params/direction = 315.0
-params/spread = 0.0
-params/linear_velocity = 90.0
-params/spin_velocity = 0.0
-params/orbit_velocity = 0.0
-params/gravity_direction = 0.0
-params/gravity_strength = 9.8
-params/radial_accel = 0.0
-params/tangential_accel = 0.0
-params/damping = 0.0
-params/initial_angle = 0.0
-params/initial_size = 1.0
-params/final_size = 1.0
-params/hue_variation = 0.0
-params/anim_speed_scale = 1.0
-params/anim_initial_pos = 0.0
-
-[connection signal="timeout" from="lightning_storm/lightning/timer" to="lightning_storm/lightning" method="_second_tick"]
 
 
