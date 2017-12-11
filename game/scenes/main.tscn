@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=1]
+[gd_scene load_steps=16 format=1]
 
 [ext_resource path="res://scripts/controller.gd" type="Script" id=1]
 [ext_resource path="res://images/characters/rin/idle.png" type="Texture" id=2]
@@ -247,11 +247,6 @@ _code = {
 shader/shader = SubResource( 7 )
 shader/shading_mode = 0
 
-[sub_resource type="RectangleShape2D" id=9]
-
-custom_solver_bias = 0.0
-extents = Vector2( 64, 3 )
-
 [node name="main" type="Node2D"]
 
 transform/scale = Vector2( 10, 10 )
@@ -326,6 +321,8 @@ drag_margin/bottom = 0.2
 
 [node name="environment" type="Node2D" parent="."]
 
+editor/display_folded = true
+
 [node name="background" type="Node2D" parent="environment"]
 
 editor/display_folded = true
@@ -367,34 +364,8 @@ texture = ExtResource( 6 )
 transform/pos = Vector2( 32, 0 )
 texture = ExtResource( 6 )
 
-[node name="physics" type="StaticBody2D" parent="environment"]
-
-editor/display_folded = true
-transform/pos = Vector2( 60, 45 )
-input/pickable = false
-shapes/0/shape = SubResource( 9 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 14 )
-shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="collision" type="CollisionShape2D" parent="environment/physics"]
-
-transform/pos = Vector2( 0, 14 )
-shape = SubResource( 9 )
-trigger = false
-_update_shape_index = 0
-
 [node name="lightning_storm" type="Node2D" parent="."]
 
-editor/display_folded = true
 visibility/visible = false
 __meta__ = {
 "_edit_group_": true
