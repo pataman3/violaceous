@@ -1,0 +1,88 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://scripts/lightning.gd" type="Script" id=1]
+[ext_resource path="res://images/environments/weather/rain.png" type="Texture" id=2]
+
+[node name="lightning_storm" type="Node2D"]
+
+editor/display_folded = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="lightning" type="CanvasModulate" parent="."]
+
+editor/display_folded = true
+color = Color( 0.394531, 0.394531, 0.394531, 1 )
+script/script = ExtResource( 1 )
+darkness_tint = Color( 0.4, 0.4, 0.4, 1 )
+frequency = 10
+
+[node name="timer" type="Timer" parent="lightning"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = true
+
+[node name="rain" type="Node2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 82.7508, 2.12864 )
+
+[node name="foreground_rain" type="Particles2D" parent="rain"]
+
+z/z = 1
+config/amount = 40
+config/lifetime = 1.0
+config/time_scale = 2.0
+config/process_mode = 1
+config/half_extents = Vector2( 100, 10 )
+config/texture = ExtResource( 2 )
+params/direction = 315.0
+params/spread = 0.0
+params/linear_velocity = 90.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+color/color = Color( 0.714844, 0.714844, 0.714844, 1 )
+
+[node name="background_rain" type="Particles2D" parent="rain"]
+
+z/z = -1
+config/amount = 40
+config/lifetime = 1.0
+config/time_scale = 2.0
+config/process_mode = 1
+config/half_extents = Vector2( 100, 10 )
+config/texture = ExtResource( 2 )
+params/direction = 315.0
+params/spread = 0.0
+params/linear_velocity = 90.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+
+[connection signal="timeout" from="lightning/timer" to="lightning" method="_second_tick"]
+
+
