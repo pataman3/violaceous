@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Node2D
 
 # children of this node
 onready var animator = get_node("animator")
@@ -8,8 +8,8 @@ onready var sprite = get_node("sprite")
 var x_velocity = 0
 
 # default walking/running speeds
-export var RUN_SPEED = 7
-export var WALK_SPEED = 3.30
+export var RUN_SPEED  = 7.0
+export var WALK_SPEED = 3.3
 
 # the minimum speed to move
 var WALK_MIN = 1
@@ -26,12 +26,12 @@ var run_keys        = [KEY_SHIFT]
 # called on start
 func _ready():
 	set_process_input(true) # recieve input events
-	set_process(true)       # run code every frame
+	set_fixed_process(true) # run code at fixed framerate
 
 
-# called every frame
-func _process(delta):
-	move(Vector2(x_velocity, 0))
+# called roughly every frame at fixed intervals
+func _fixed_process(delta):
+	translate(Vector2(x_velocity, 0))
 
 
 # called whenever an input is recieved
