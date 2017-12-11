@@ -332,13 +332,13 @@ material/use_parent = true
 transform/pos = Vector2( -35.4278, -42.2282 )
 texture = ExtResource( 6 )
 
-[node name="left_sprite" type="Sprite" parent="environment/background"]
+[node name="grass_1" type="Sprite" parent="environment/background"]
 
 material/use_parent = true
 transform/pos = Vector2( -32, 0 )
 texture = ExtResource( 7 )
 
-[node name="right_sprite" type="Sprite" parent="environment/background"]
+[node name="grass_2" type="Sprite" parent="environment/background"]
 
 material/use_parent = true
 transform/pos = Vector2( 32, 0 )
@@ -346,19 +346,18 @@ texture = ExtResource( 7 )
 
 [node name="foreground" type="Node2D" parent="environment"]
 
-editor/display_folded = true
 transform/pos = Vector2( 107.26, 103.823 )
 z/z = 1
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="left_sprite" type="Sprite" parent="environment/foreground"]
+[node name="grass_1" type="Sprite" parent="environment/foreground"]
 
 transform/pos = Vector2( -32, 0 )
 texture = ExtResource( 7 )
 
-[node name="right_sprite" type="Sprite" parent="environment/foreground"]
+[node name="grass_2" type="Sprite" parent="environment/foreground"]
 
 transform/pos = Vector2( 32, 0 )
 texture = ExtResource( 7 )
