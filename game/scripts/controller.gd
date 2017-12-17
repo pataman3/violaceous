@@ -2,7 +2,6 @@ extends KinematicBody2D
 
 # children of this node
 onready var animator = get_node("animator")
-onready var sprite = get_node("sprite")
 
 # x velocity
 var x_velocity = 0
@@ -51,7 +50,7 @@ func _is_key_pressed(key_array):
 		if Input.is_key_pressed(key):
 			return true
 	return false
-	
+
 # called by _input when a key input is recieved
 func _key_input(event):
 	# ignore repeating keys
@@ -69,6 +68,10 @@ func _key_input(event):
 		x_velocity = -WALK_SPEED
 	if _is_key_pressed(run_keys):
 		x_velocity = RUN_SPEED * sign(x_velocity)
+	
+	# face the correct direction
+	if x_velocity != 0:
+		set_scale(Vector2(sign(x_velocity), 1))
 
 
 # called by _input when a joystick input is recieved
@@ -91,7 +94,4 @@ func _set_anim():
 	# only play the animation if it's not already playing
 	if animator.get_current_animation() != anim:
 		animator.play(anim)
-	
-	# face the correct direction
-	if x_velocity != 0:
-		sprite.set_flip_h(x_velocity < 0)
+
