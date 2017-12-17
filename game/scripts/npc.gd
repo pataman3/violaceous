@@ -1,8 +1,24 @@
 extends KinematicBody2D
 
-var message = "Stop turning me around!"
+# the TextInterfaceEngine for the dialog box
+onready var dialog = get_node("dialog_box/dialog_box_text")
+
 
 # called when the player interacts with this npc
 func activate():
-	print(message)
-	set_scale(Vector2(-get_scale().x, 1))
+	# show the dialog box
+	get_node("dialog_box").set_hidden(false)
+	
+	# clear text
+	dialog.buff_clear()
+	
+	# change color to white
+	dialog.set_color(Color(1, 1, 1))
+	
+	# buffer wisdom
+	dialog.buff_text("Sometimes, " , 0.07)
+	dialog.buff_silence(0.3)
+	dialog.buff_text("a dog needs to die.", 0.07)
+	
+	# set the dialog to output mode
+	dialog.set_state(dialog.STATE_OUTPUT)

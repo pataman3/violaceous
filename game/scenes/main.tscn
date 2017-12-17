@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=1]
+[gd_scene load_steps=21 format=1]
 
 [ext_resource path="res://scripts/controller.gd" type="Script" id=1]
 [ext_resource path="res://images/characters/rin/idle.png" type="Texture" id=2]
@@ -6,8 +6,11 @@
 [ext_resource path="res://images/characters/rin/turn.png" type="Texture" id=4]
 [ext_resource path="res://images/characters/rin/walk.png" type="Texture" id=5]
 [ext_resource path="res://scripts/npc.gd" type="Script" id=6]
-[ext_resource path="res://images/environments/foliage/trees/tree.png" type="Texture" id=7]
-[ext_resource path="res://images/environments/foliage/grass/grass.png" type="Texture" id=8]
+[ext_resource path="res://addons/GodotTIE/text_interface_engine.gd" type="Script" id=7]
+[ext_resource path="res://addons/GodotTIE/GodotTIE_icon.png" type="Texture" id=8]
+[ext_resource path="res://fonts/arial.fnt" type="BitmapFont" id=9]
+[ext_resource path="res://images/environments/foliage/trees/tree.png" type="Texture" id=10]
+[ext_resource path="res://images/environments/foliage/grass/grass.png" type="Texture" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -258,7 +261,8 @@ shader/shading_mode = 0
 
 [node name="rin" type="KinematicBody2D" parent="."]
 
-transform/pos = Vector2( 97, 94 )
+transform/pos = Vector2( 130, 94 )
+transform/scale = Vector2( -1, 1 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -340,6 +344,7 @@ _update_shape_index = 0
 
 [node name="activation_area" type="Area2D" parent="rin"]
 
+editor/display_folded = true
 visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 7 )
@@ -359,8 +364,7 @@ _update_shape_index = 0
 
 [node name="npc" type="KinematicBody2D" parent="."]
 
-transform/pos = Vector2( 140, 94 )
-transform/scale = Vector2( -1, 1 )
+transform/pos = Vector2( 70, 94 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -402,6 +406,43 @@ shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
+[node name="dialog_box" type="Panel" parent="npc"]
+
+visibility/visible = false
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -30.0
+margin/top = -45.0
+margin/right = 30.0
+margin/bottom = -25.0
+
+[node name="dialog_box_text" type="ReferenceFrame" parent="npc/dialog_box"]
+
+rect/scale = Vector2( 0.2, 0.2 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 3.0
+margin/top = 3.0
+margin/right = 273.0
+margin/bottom = 73.0
+script/script = ExtResource( 7 )
+__meta__ = {
+"_editor_icon": ExtResource( 8 )
+}
+SCROLL_ON_MAX_LINES = true
+BREAK_ON_MAX_LINES = true
+AUTO_SKIP_WORDS = true
+LOG_SKIPPED_LINES = true
+SCROLL_SKIPPED_LINES = false
+FONT = ExtResource( 9 )
+PRINT_INPUT = true
+BLINKING_INPUT = true
+INPUT_CHARACTERS_LIMIT = -1
+
 [node name="environment" type="Node2D" parent="."]
 
 [node name="background" type="Node2D" parent="environment"]
@@ -414,19 +455,19 @@ z/z = -1
 
 material/use_parent = true
 transform/pos = Vector2( -35.4278, -42.2282 )
-texture = ExtResource( 7 )
+texture = ExtResource( 10 )
 
 [node name="grass_1" type="Sprite" parent="environment/background"]
 
 material/use_parent = true
 transform/pos = Vector2( -32, 0 )
-texture = ExtResource( 8 )
+texture = ExtResource( 11 )
 
 [node name="grass_2" type="Sprite" parent="environment/background"]
 
 material/use_parent = true
 transform/pos = Vector2( 32, 0 )
-texture = ExtResource( 8 )
+texture = ExtResource( 11 )
 
 [node name="foreground" type="Node2D" parent="environment"]
 
@@ -439,11 +480,11 @@ __meta__ = {
 [node name="grass_1" type="Sprite" parent="environment/foreground"]
 
 transform/pos = Vector2( -32, 0 )
-texture = ExtResource( 8 )
+texture = ExtResource( 11 )
 
 [node name="grass_2" type="Sprite" parent="environment/foreground"]
 
 transform/pos = Vector2( 32, 0 )
-texture = ExtResource( 8 )
+texture = ExtResource( 11 )
 
 
