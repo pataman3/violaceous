@@ -1,4 +1,4 @@
-extends Node2D
+extends KinematicBody2D
 
 # children of this node
 onready var animator = get_node("animator")
@@ -31,7 +31,7 @@ func _ready():
 
 # called roughly every frame at fixed intervals
 func _fixed_process(delta):
-	translate(Vector2(x_velocity, 0))
+	move(Vector2(x_velocity, 0))
 
 
 # called whenever an input is recieved
