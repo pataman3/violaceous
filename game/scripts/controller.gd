@@ -1,7 +1,8 @@
 extends KinematicBody2D
 
 # children of this node
-onready var animator = get_node("animator")
+onready var animator        = get_node("animator")
+onready var activation_area = get_node("activation_area")
 
 # x velocity
 var x_velocity = 0
@@ -17,9 +18,10 @@ var WALK_MIN = 1
 var supported_inputs = [InputEvent.KEY, InputEvent.JOYSTICK_MOTION]
 
 # keyboard inputs for actions
-var move_right_keys = [KEY_D, KEY_RIGHT]
-var move_left_keys  = [KEY_A, KEY_LEFT]
-var run_keys        = [KEY_SHIFT]
+var move_right_keys   = [KEY_D, KEY_RIGHT]
+var move_left_keys    = [KEY_A, KEY_LEFT]
+var run_keys          = [KEY_SHIFT]
+var activation_keys   = [KEY_SPACE]
 
 
 # called on start
@@ -72,6 +74,14 @@ func _key_input(event):
 	# face the correct direction
 	if x_velocity != 0:
 		set_scale(Vector2(sign(x_velocity), 1))
+	
+	# check if the player is activating something
+	if _is_key_pressed(activation_keys):
+		# also possible to check Area2D.get_ovelapping_areas()
+		var bodies = activation_area.get_overlapping_bodies()
+		# currently does not choose which one to activate in any meaningful way
+		if bodies.size() > 0 and bodies[0].has_method("activate"):
+			bodies[0].activate()
 
 
 # called by _input when a joystick input is recieved

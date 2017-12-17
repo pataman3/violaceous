@@ -1,12 +1,13 @@
-[gd_scene load_steps=16 format=1]
+[gd_scene load_steps=18 format=1]
 
 [ext_resource path="res://scripts/controller.gd" type="Script" id=1]
 [ext_resource path="res://images/characters/rin/idle.png" type="Texture" id=2]
 [ext_resource path="res://images/characters/rin/run.png" type="Texture" id=3]
 [ext_resource path="res://images/characters/rin/turn.png" type="Texture" id=4]
 [ext_resource path="res://images/characters/rin/walk.png" type="Texture" id=5]
-[ext_resource path="res://images/environments/foliage/trees/tree.png" type="Texture" id=6]
-[ext_resource path="res://images/environments/foliage/grass/grass.png" type="Texture" id=7]
+[ext_resource path="res://scripts/npc.gd" type="Script" id=6]
+[ext_resource path="res://images/environments/foliage/trees/tree.png" type="Texture" id=7]
+[ext_resource path="res://images/environments/foliage/grass/grass.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=9]
 
@@ -235,6 +236,11 @@ tracks/4/keys = {
 custom_solver_bias = 0.0
 segments = Vector2Array( -3.79556, -20.789, 3.53728, -20.9557, 3.53728, -20.9557, 3.53728, -12.9562, 3.53728, -12.9562, 8.20363, 4.04262, 8.20363, 4.04262, 4.53721, 4.20927, 4.53721, 4.20927, 5.53715, 18.0417, 5.53715, 18.0417, 8.03698, 20.8748, 8.03698, 20.8748, -8.29525, 20.8748, -8.29525, 20.8748, -5.96207, 4.37593, -5.96207, 4.37593, -8.29525, 3.54265, -8.29525, 3.54265, -7.62863, -9.62312, -7.62863, -9.62312, -3.79556, -13.2895, -3.79556, -13.2895, -3.79556, -20.789 )
 
+[sub_resource type="RectangleShape2D" id=10]
+
+custom_solver_bias = 0.0
+extents = Vector2( 5, 23 )
+
 [sub_resource type="CanvasItemShader" id=7]
 
 _code = {
@@ -258,7 +264,6 @@ transform/scale = Vector2( 5, 5 )
 [node name="rin" type="KinematicBody2D" parent="."]
 
 transform/pos = Vector2( 97, 94 )
-transform/scale = Vector2( 1, 1 )
 input/pickable = false
 shapes/0/shape = SubResource( 9 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -334,17 +339,36 @@ drag_margin/top = 0.2
 drag_margin/right = 0.2
 drag_margin/bottom = 0.2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="rin"]
+[node name="collision" type="CollisionShape2D" parent="rin"]
 
 visibility/visible = false
 shape = SubResource( 9 )
 trigger = false
 _update_shape_index = 0
 
+[node name="activation_area" type="Area2D" parent="rin"]
+
+visibility/visible = false
+input/pickable = true
+shapes/0/shape = SubResource( 10 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 16, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="activation_area_collision" type="CollisionShape2D" parent="rin/activation_area"]
+
+transform/pos = Vector2( 16, 0 )
+shape = SubResource( 10 )
+trigger = false
+_update_shape_index = 0
+
 [node name="npc" type="KinematicBody2D" parent="."]
 
 transform/pos = Vector2( 140, 94 )
-transform/scale = Vector2( 1, 1 )
+transform/scale = Vector2( -1, 1 )
 input/pickable = false
 shapes/0/shape = SubResource( 9 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -352,17 +376,16 @@ shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
+script/script = ExtResource( 6 )
 
 [node name="sprite" type="Sprite" parent="npc"]
 
 transform/pos = Vector2( 0.259499, -0.177002 )
 transform/scale = Vector2( 1, 1 )
 texture = ExtResource( 2 )
-flip_h = true
 
 [node name="hitbox" type="Area2D" parent="npc"]
 
-editor/display_folded = true
 visibility/visible = false
 transform/pos = Vector2( 0.259499, -0.177002 )
 transform/scale = Vector2( 1, 1 )
@@ -382,7 +405,7 @@ polygon = Vector2Array( -3.79556, -20.789, 3.53728, -20.9557, 3.53728, -12.9562,
 shape_range = Vector2( 0, 0 )
 trigger = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="npc"]
+[node name="collision" type="CollisionShape2D" parent="npc"]
 
 visibility/visible = false
 shape = SubResource( 9 )
@@ -401,19 +424,19 @@ z/z = -1
 
 material/use_parent = true
 transform/pos = Vector2( -35.4278, -42.2282 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 
 [node name="grass_1" type="Sprite" parent="environment/background"]
 
 material/use_parent = true
 transform/pos = Vector2( -32, 0 )
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 
 [node name="grass_2" type="Sprite" parent="environment/background"]
 
 material/use_parent = true
 transform/pos = Vector2( 32, 0 )
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 
 [node name="foreground" type="Node2D" parent="environment"]
 
@@ -426,11 +449,11 @@ __meta__ = {
 [node name="grass_1" type="Sprite" parent="environment/foreground"]
 
 transform/pos = Vector2( -32, 0 )
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 
 [node name="grass_2" type="Sprite" parent="environment/foreground"]
 
 transform/pos = Vector2( 32, 0 )
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 
 
