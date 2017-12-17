@@ -5,7 +5,6 @@
 
 [node name="lightning_storm" type="Node2D"]
 
-editor/display_folded = true
 __meta__ = {
 "_edit_group_": true
 }
@@ -27,17 +26,17 @@ autostart = true
 
 [node name="rain" type="Node2D" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( 82.7508, 2.12864 )
 
 [node name="foreground_rain" type="Particles2D" parent="rain"]
 
 z/z = 1
-config/amount = 40
-config/lifetime = 1.0
+config/amount = 100
+config/lifetime = 1.7
 config/time_scale = 2.0
+config/preprocess = 2.0
 config/process_mode = 1
-config/half_extents = Vector2( 100, 10 )
+config/half_extents = Vector2( 200, 10 )
 config/texture = ExtResource( 2 )
 params/direction = 315.0
 params/spread = 0.0
@@ -60,11 +59,12 @@ color/color = Color( 0.714844, 0.714844, 0.714844, 1 )
 [node name="background_rain" type="Particles2D" parent="rain"]
 
 z/z = -1
-config/amount = 40
-config/lifetime = 1.0
+config/amount = 100
+config/lifetime = 1.7
 config/time_scale = 2.0
+config/preprocess = 2.0
 config/process_mode = 1
-config/half_extents = Vector2( 100, 10 )
+config/half_extents = Vector2( 200, 10 )
 config/texture = ExtResource( 2 )
 params/direction = 315.0
 params/spread = 0.0
