@@ -336,6 +336,55 @@ drag_margin/bottom = 0.2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="rin"]
 
+visibility/visible = false
+shape = SubResource( 9 )
+trigger = false
+_update_shape_index = 0
+
+[node name="npc" type="KinematicBody2D" parent="."]
+
+transform/pos = Vector2( 140, 94 )
+transform/scale = Vector2( 1, 1 )
+input/pickable = false
+shapes/0/shape = SubResource( 9 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+
+[node name="sprite" type="Sprite" parent="npc"]
+
+transform/pos = Vector2( 0.259499, -0.177002 )
+transform/scale = Vector2( 1, 1 )
+texture = ExtResource( 2 )
+flip_h = true
+
+[node name="hitbox" type="Area2D" parent="npc"]
+
+editor/display_folded = true
+visibility/visible = false
+transform/pos = Vector2( 0.259499, -0.177002 )
+transform/scale = Vector2( 1, 1 )
+input/pickable = true
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="hitbox_collision" type="CollisionPolygon2D" parent="npc/hitbox"]
+
+build_mode = 1
+polygon = Vector2Array( -3.79556, -20.789, 3.53728, -20.9557, 3.53728, -12.9562, 8.20363, 4.04262, 4.53721, 4.20927, 5.53715, 18.0417, 8.03698, 20.8748, -8.29525, 20.8748, -5.96207, 4.37593, -8.29525, 3.54265, -7.62863, -9.62312, -3.79556, -13.2895 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="npc"]
+
+visibility/visible = false
 shape = SubResource( 9 )
 trigger = false
 _update_shape_index = 0
