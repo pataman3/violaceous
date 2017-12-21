@@ -1,497 +1,315 @@
-[gd_scene load_steps=22 format=1]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scripts/controller.gd" type="Script" id=1]
-[ext_resource path="res://images/characters/rin/idle.png" type="Texture" id=2]
-[ext_resource path="res://images/characters/rin/run.png" type="Texture" id=3]
-[ext_resource path="res://images/characters/rin/turn.png" type="Texture" id=4]
-[ext_resource path="res://images/characters/rin/walk.png" type="Texture" id=5]
-[ext_resource path="res://scripts/npc.gd" type="Script" id=6]
-[ext_resource path="res://addons/GodotTIE/text_interface_engine.gd" type="Script" id=7]
-[ext_resource path="res://addons/GodotTIE/GodotTIE_icon.png" type="Texture" id=8]
-[ext_resource path="res://fonts/arial.fnt" type="BitmapFont" id=9]
-[ext_resource path="res://images/environments/foliage/trees/tree.png" type="Texture" id=10]
-[ext_resource path="res://images/environments/foliage/grass/grass.png" type="Texture" id=11]
-[ext_resource path="res://scenes/weather/lightning_storm.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/images/characters/rin/walk.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/characters/rin/idle.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/characters/rin/run.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/characters/rin/turn.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/environment/foliage/trees/tree.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/environment/foliage/grass/grass.png" type="Texture" id=7]
+
+[sub_resource type="Animation" id=3]
+
+resource_name = "idle"
+length = 0.1
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=5]
+
+resource_name = "run"
+length = 0.6
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 5 ]
+}
+
+[sub_resource type="Animation" id=6]
+
+resource_name = "turn"
+length = 0.5
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 4 ]
+}
+
+[sub_resource type="Animation" id=4]
+
+resource_name = "walk"
+length = 0.6
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 5 ]
+}
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 23 )
 
-[sub_resource type="Animation" id=2]
-
-length = 0.1
-loop = true
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("../rin/sprite:texture")
-tracks/0/interp = 1
-tracks/0/imported = false
-tracks/0/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 2 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("../rin/sprite:hframes")
-tracks/1/interp = 1
-tracks/1/imported = false
-tracks/1/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 1,
-"values": [ 1 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("../rin/sprite:offset")
-tracks/2/interp = 1
-tracks/2/imported = false
-tracks/2/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("../rin/sprite:frame")
-tracks/3/interp = 1
-tracks/3/imported = false
-tracks/3/keys = {
-"times": FloatArray( 0, 0.1 ),
-"transitions": FloatArray( 1, 1 ),
-"update": 0,
-"values": [ 0, 0 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("hitbox/hitbox_collision:polygon")
-tracks/4/interp = 1
-tracks/4/imported = false
-tracks/4/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 1,
-"values": [ Vector2Array( -3.79556, -20.789, 3.53728, -20.9557, 3.53728, -12.9562, 8.20363, 4.04262, 4.53721, 4.20927, 5.53715, 18.0417, 8.03698, 20.8748, -8.29525, 20.8748, -5.96207, 4.37593, -8.29525, 3.54265, -7.62863, -9.62312, -3.79556, -13.2895 ) ]
-}
-
-[sub_resource type="Animation" id=3]
-
-length = 0.6
-loop = true
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("../rin/sprite:texture")
-tracks/0/interp = 1
-tracks/0/imported = false
-tracks/0/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 3 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("../rin/sprite:hframes")
-tracks/1/interp = 1
-tracks/1/imported = false
-tracks/1/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 1,
-"values": [ 6 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("../rin/sprite:offset")
-tracks/2/interp = 1
-tracks/2/imported = false
-tracks/2/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("../rin/sprite:frame")
-tracks/3/interp = 1
-tracks/3/imported = false
-tracks/3/keys = {
-"times": FloatArray( 0, 0.6 ),
-"transitions": FloatArray( 1, 1 ),
-"update": 0,
-"values": [ 0, 5 ]
-}
-
-[sub_resource type="Animation" id=4]
-
-length = 0.5
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("../rin/sprite:texture")
-tracks/0/interp = 1
-tracks/0/imported = false
-tracks/0/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 4 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("../rin/sprite:hframes")
-tracks/1/interp = 1
-tracks/1/imported = false
-tracks/1/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 1,
-"values": [ 5 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("../rin/sprite:offset")
-tracks/2/interp = 1
-tracks/2/imported = false
-tracks/2/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("../rin/sprite:frame")
-tracks/3/interp = 1
-tracks/3/imported = false
-tracks/3/keys = {
-"times": FloatArray( 0, 0.5 ),
-"transitions": FloatArray( 1, 1 ),
-"update": 0,
-"values": [ 0, 4 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("hitbox/hitbox_collision:polygon")
-tracks/4/interp = 1
-tracks/4/imported = false
-tracks/4/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 1,
-"values": [ Vector2Array( 1.83714, -19.4616, 1.83714, -10.3937, 5.53147, -5.35602, 9.72957, 0.85717, 6.20317, 4.88735, 14.2635, 18.4892, 13.256, 20.5043, -8.57415, 20.5043, -9.07792, 13.9552, -16.6345, 15.8024, -15.2911, 8.0779, -8.91, 7.57413, -8.74207, -0.150375, -16.8024, 2.70433, -16.8024, -1.15792, -10.4213, -6.36356, -10.4213, -13.5843, -4.37605, -19.4616 ) ]
-}
-
-[sub_resource type="Animation" id=5]
-
-length = 0.6
-loop = true
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("../rin/sprite:texture")
-tracks/0/interp = 1
-tracks/0/imported = false
-tracks/0/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 5 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("../rin/sprite:hframes")
-tracks/1/interp = 1
-tracks/1/imported = false
-tracks/1/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 1,
-"values": [ 6 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("../rin/sprite:offset")
-tracks/2/interp = 1
-tracks/2/imported = false
-tracks/2/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, -3 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("../rin/sprite:frame")
-tracks/3/interp = 1
-tracks/3/imported = false
-tracks/3/keys = {
-"times": FloatArray( 0, 0.6 ),
-"transitions": FloatArray( 1, 1 ),
-"update": 0,
-"values": [ 0, 5 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("hitbox/hitbox_collision:polygon")
-tracks/4/interp = 1
-tracks/4/imported = false
-tracks/4/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 1,
-"values": [ Vector2Array( 1.59164, -17.6496, 9.1137, -17.6496, 9.1137, -9.23209, 6.60635, -6.72474, 15.0239, 3.84196, 13.412, 5.63292, 5.88996, -0.277264, 8.21821, 9.21486, 11.2629, 14.2296, 14.1284, 20.677, -9.33324, 20.4979, -11.4824, 17.6324, -3.60215, 10.1103, -3.60215, 4.91653, -9.51234, 2.40918, 1.59164, -11.2021 ) ]
-}
-
-[sub_resource type="ConcavePolygonShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-segments = Vector2Array( -3.79556, -20.789, 3.53728, -20.9557, 3.53728, -20.9557, 3.53728, -12.9562, 3.53728, -12.9562, 8.20363, 4.04262, 8.20363, 4.04262, 4.53721, 4.20927, 4.53721, 4.20927, 5.53715, 18.0417, 5.53715, 18.0417, 8.03698, 20.8748, 8.03698, 20.8748, -8.29525, 20.8748, -8.29525, 20.8748, -5.96207, 4.37593, -5.96207, 4.37593, -8.29525, 3.54265, -8.29525, 3.54265, -7.62863, -9.62312, -7.62863, -9.62312, -3.79556, -13.2895, -3.79556, -13.2895, -3.79556, -20.789 )
+extents = Vector2( 14, 27 )
 
-[sub_resource type="RectangleShape2D" id=7]
-
-custom_solver_bias = 0.0
-extents = Vector2( 5, 23 )
-
-[sub_resource type="CanvasItemShader" id=8]
-
-_code = {
-"fragment": "COLOR = color(COLOR.rgb / 1.5, COLOR.a);",
-"fragment_ofs": 0,
-"light": "",
-"light_ofs": 0,
-"vertex": "",
-"vertex_ofs": 0
-}
-
-[sub_resource type="CanvasItemMaterial" id=9]
-
-shader/shader = SubResource( 8 )
-shader/shading_mode = 0
-
-[node name="main" type="Node2D"]
+[node name="main" type="Node"]
 
 [node name="rin" type="KinematicBody2D" parent="."]
 
-transform/pos = Vector2( 130, 94 )
-transform/scale = Vector2( -1, 1 )
-input/pickable = false
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
-collision/margin = 0.08
-script/script = ExtResource( 1 )
+position = Vector2( 20, 26 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 4
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 RUN_SPEED = 1.3
 WALK_SPEED = 0.9
 
 [node name="sprite" type="Sprite" parent="rin"]
 
-transform/pos = Vector2( 0.259499, -0.177002 )
 texture = ExtResource( 2 )
+hframes = 6
+frame = 3
 
 [node name="animator" type="AnimationPlayer" parent="rin"]
 
-playback/process_mode = 1
-playback/default_blend_time = 0.0
-root/root = NodePath("..")
-anims/idle = SubResource( 2 )
-anims/run = SubResource( 3 )
-anims/turn = SubResource( 4 )
-anims/walk = SubResource( 5 )
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+root_node = NodePath("..")
+anims/idle = SubResource( 3 )
+anims/run = SubResource( 5 )
+anims/turn = SubResource( 6 )
+anims/walk = SubResource( 4 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
 autoplay = "idle"
 
-[node name="hitbox" type="Area2D" parent="rin"]
-
-editor/display_folded = true
-visibility/visible = false
-transform/pos = Vector2( 0.259499, -0.177002 )
-input/pickable = true
-shapes/0/shape = SubResource( 6 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-
-[node name="hitbox_collision" type="CollisionPolygon2D" parent="rin/hitbox"]
-
-build_mode = 1
-polygon = Vector2Array( -3.79556, -20.789, 3.53728, -20.9557, 3.53728, -12.9562, 8.20363, 4.04262, 4.53721, 4.20927, 5.53715, 18.0417, 8.03698, 20.8748, -8.29525, 20.8748, -5.96207, 4.37593, -8.29525, 3.54265, -7.62863, -9.62312, -3.79556, -13.2895 )
-shape_range = Vector2( 0, 0 )
-trigger = false
-
 [node name="camera" type="Camera2D" parent="rin"]
 
-transform/pos = Vector2( 0.459496, -26.177 )
-offset = Vector2( 0, -8 )
+offset = Vector2( 0, -35 )
 anchor_mode = 1
 rotating = false
 current = true
 zoom = Vector2( 0.2, 0.2 )
-limit/left = -10000000
-limit/top = -10000000
-limit/right = 10000000
-limit/bottom = 10000000
-drag_margin/h_enabled = true
-drag_margin/v_enabled = false
-smoothing/enable = false
-smoothing/speed = 5.0
-drag_margin/left = 0.0
-drag_margin/top = 0.2
-drag_margin/right = 0.05
-drag_margin/bottom = 0.2
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = false
+smoothing_enabled = false
+smoothing_speed = 5.0
+drag_margin_left = 0.0
+drag_margin_top = 0.2
+drag_margin_right = 0.05
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
 
-[node name="collision" type="CollisionShape2D" parent="rin"]
+[node name="physics_collision" type="CollisionShape2D" parent="rin"]
 
-visibility/visible = false
+visible = false
 shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
 
 [node name="activation_area" type="Area2D" parent="rin"]
 
-editor/display_folded = true
-visibility/visible = false
-input/pickable = true
-shapes/0/shape = SubResource( 7 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 16, 0 )
-shapes/0/trigger = false
+visible = false
+input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+collision_layer = 2
+collision_mask = 4
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="activation_area_collision" type="CollisionShape2D" parent="rin/activation_area"]
+[node name="collision" type="CollisionShape2D" parent="rin/activation_area"]
 
-transform/pos = Vector2( 16, 0 )
-shape = SubResource( 7 )
-trigger = false
-_update_shape_index = 0
-
-[node name="npc" type="KinematicBody2D" parent="."]
-
-transform/pos = Vector2( 70, 94 )
-input/pickable = false
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
-collision/margin = 0.08
-script/script = ExtResource( 6 )
-
-[node name="sprite" type="Sprite" parent="npc"]
-
-transform/pos = Vector2( 0.259499, -0.177002 )
-texture = ExtResource( 2 )
-
-[node name="hitbox" type="Area2D" parent="npc"]
-
-visibility/visible = false
-transform/pos = Vector2( 0.259499, -0.177002 )
-input/pickable = true
-shapes/0/shape = SubResource( 6 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-
-[node name="hitbox_collision" type="CollisionPolygon2D" parent="npc/hitbox"]
-
-build_mode = 1
-polygon = Vector2Array( -3.79556, -20.789, 3.53728, -20.9557, 3.53728, -12.9562, 8.20363, 4.04262, 4.53721, 4.20927, 5.53715, 18.0417, 8.03698, 20.8748, -8.29525, 20.8748, -5.96207, 4.37593, -8.29525, 3.54265, -7.62863, -9.62312, -3.79556, -13.2895 )
-shape_range = Vector2( 0, 0 )
-trigger = false
-
-[node name="collision" type="CollisionShape2D" parent="npc"]
-
-visibility/visible = false
-shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
-
-[node name="dialog_box" type="Panel" parent="npc"]
-
-visibility/visible = false
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = -30.0
-margin/top = -45.0
-margin/right = 30.0
-margin/bottom = -25.0
-
-[node name="dialog_box_text" type="ReferenceFrame" parent="npc/dialog_box"]
-
-rect/scale = Vector2( 0.2, 0.2 )
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 3.0
-margin/top = 3.0
-margin/right = 273.0
-margin/bottom = 73.0
-script/script = ExtResource( 7 )
-__meta__ = {
-"_editor_icon": ExtResource( 8 )
-}
-SCROLL_ON_MAX_LINES = true
-BREAK_ON_MAX_LINES = true
-AUTO_SKIP_WORDS = true
-LOG_SKIPPED_LINES = true
-SCROLL_SKIPPED_LINES = false
-FONT = ExtResource( 9 )
-PRINT_INPUT = true
-BLINKING_INPUT = true
-INPUT_CHARACTERS_LIMIT = -1
+shape = SubResource( 2 )
 
 [node name="environment" type="Node2D" parent="."]
 
-editor/display_folded = true
-
 [node name="background" type="Node2D" parent="environment"]
 
-material/material = SubResource( 9 )
-transform/pos = Vector2( 97.2595, 100.823 )
-z/z = -1
+modulate = Color( 0.566406, 0.566406, 0.566406, 1 )
+z = -1
 
 [node name="tree" type="Sprite" parent="environment/background"]
 
-material/use_parent = true
-transform/pos = Vector2( -35.4278, -42.2282 )
-texture = ExtResource( 10 )
+position = Vector2( -29.4094, -10.7304 )
+texture = ExtResource( 6 )
 
-[node name="grass_1" type="Sprite" parent="environment/background"]
+[node name="grass" type="Node2D" parent="environment/background"]
 
-material/use_parent = true
-transform/pos = Vector2( -32, 0 )
-texture = ExtResource( 11 )
-
-[node name="grass_2" type="Sprite" parent="environment/background"]
-
-material/use_parent = true
-transform/pos = Vector2( 32, 0 )
-texture = ExtResource( 11 )
-
-[node name="foreground" type="Node2D" parent="environment"]
-
-transform/pos = Vector2( 107.26, 103.823 )
-z/z = 1
+editor/display_folded = true
+position = Vector2( 6.3588, 32.9862 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="grass_1" type="Sprite" parent="environment/foreground"]
+[node name="left" type="Sprite" parent="environment/background/grass"]
 
-transform/pos = Vector2( -32, 0 )
-texture = ExtResource( 11 )
+position = Vector2( -32, 0 )
+texture = ExtResource( 7 )
 
-[node name="grass_2" type="Sprite" parent="environment/foreground"]
+[node name="right" type="Sprite" parent="environment/background/grass"]
 
-transform/pos = Vector2( 32, 0 )
-texture = ExtResource( 11 )
+position = Vector2( 32, 0 )
+texture = ExtResource( 7 )
 
-[node name="lightning_storm" parent="." instance=ExtResource( 12 )]
+[node name="foreground" type="Node2D" parent="environment"]
 
-transform/pos = Vector2( 89.0714, 1.40639 )
+z = 1
+
+[node name="grass" type="Node2D" parent="environment/foreground"]
+
+editor/display_folded = true
+position = Vector2( 8.34592, 34.9733 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="grass_left" type="Sprite" parent="environment/foreground/grass"]
+
+position = Vector2( -32, 0 )
+texture = ExtResource( 7 )
+
+[node name="grass_right" type="Sprite" parent="environment/foreground/grass"]
+
+position = Vector2( 32, 0 )
+texture = ExtResource( 7 )
 
 

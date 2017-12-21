@@ -1,3 +1,6 @@
+# this code will be unused until
+# I add the lightning scene back
+
 extends CanvasModulate
 
 # time since the last lightning strike in seconds
@@ -13,7 +16,6 @@ export var frequency = 10
 # called on start
 func _ready():
 	next_flash = flash_time()
-	set_process(true)
 
 
 # called every frame

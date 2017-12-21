@@ -1,3 +1,6 @@
+# this code will be unused until 
+# TextInterfaceEngine is added again
+
 extends KinematicBody2D
 
 # the TextInterfaceEngine for the dialog box
