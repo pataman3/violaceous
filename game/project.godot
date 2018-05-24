@@ -13,3 +13,8 @@ config_version=3
 config/name="Violaceous"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+DialogBox="*res://dialog/DialogBox.tscn"
+ActiveCutscene="*res://cutscenes/ActiveCutscene.gd"
