@@ -9,6 +9,10 @@ extends NinePatchRect
 #    3. Call `start`
 #
 
+# a reference to a Line.gd and Options.gd nodes
+export (NodePath) var line_node
+export (NodePath) var options_node
+
 # [[String, AudioSteamPlayer] ...]
 # The lines of dialog that will be spoken to the player,
 # paired with the (possibly null) voice spoken for each letter.
@@ -43,20 +47,20 @@ func start():
 		return
 	ActiveCutscene.start_action(self)
 	show()
-	$Line.set_process_input(true)
+	get_node(line_node).set_process_input(true)
 	advance_dialog()
 
 
 func advance_dialog():
 	if len(lines) > 0:
-		$Line.say(lines[0][0], lines[0][1])
+		get_node(line_node).say(self, lines[0][0], lines[0][1])
 		lines.pop_front()
 	else:
-		$Line.set_process_input(false)
+		get_node(line_node).set_process_input(false)
 		if options == null:
 			finish()
 		else:
-			$Options.start(options)
+			get_node(options_node).start(self, options)
 
 
 func finish(path = null):

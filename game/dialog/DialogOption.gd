@@ -1,22 +1,24 @@
 extends Button
 
 # Node
-# A reference to the node that created this Option
-onready var options = get_parent().get_parent()
+# a reference to the Options node that created this
+var options_node
 
 # String
 # The paragraph to advance to if this Option is selected.
 var paragraph
 
 
-# (String, String)
-# Contructor for Options.
+# (Options, String, String)
+# Contructor for Option objects.
+# options_node : See self.options_node
 # line : The dialog option shown
 # paragraph : See Option.paragraph
-func create(line, paragraph):
+func create(options_node, line, paragraph):
+	self.options_node = options_node
 	text = line
 	self.paragraph = paragraph
 
 # Called when the option is selected.
 func _on_press():
-	options.option_selected(paragraph)
+	options_node.option_selected(paragraph)

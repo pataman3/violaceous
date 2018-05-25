@@ -4,17 +4,22 @@ extends ScrollContainer
 #   + Add keyboard support (or replace mouse support with keyboard support)
 #   + Wrap lines when they're too long
 
-# PackedScene
 # A reference the DialogOption scene
-var dialog_option = preload('res://dialog/DialogOption.tscn')
+export (PackedScene) var dialog_option
+
+# Node
+# a reference to the dialog manager node
+var manager_node
 
 
-# [[String, String] ...]
+# (Manager, [[String, String] ...])
+# manager_node : See self.manager_node
 # options : See Manager.options
-func start(options):
+func start(manager_node, options):
+	self.manager_node = manager_node
 	for option in options:
 		var button = dialog_option.instance()
-		button.create(option[0], option[1])
+		button.create(self, option[0], option[1])
 		$VBoxContainer.add_child(button)
 	set_v_scroll(0)
 	show()
@@ -25,7 +30,7 @@ func start(options):
 # next_paragraph : The paragraph to advance to next
 func option_selected(next_paragraph):
 	finish()
-	get_parent().finish(next_paragraph)
+	manager_node.finish(next_paragraph)
 
 
 func finish():

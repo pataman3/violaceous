@@ -1,5 +1,9 @@
 extends RichTextLabel
 
+# Node
+# a reference to the dialog manager node
+var manager_node
+
 # AudioStreamPlayer
 # The sound to play for each character. If null, nothing will play.
 var voice
@@ -19,11 +23,13 @@ func _ready():
 	set_process_input(false)
 
 
-# (String, AudioStreamPlayer)
+# (Manager, String, AudioStreamPlayer)
 # Start displaying a line of text.
+# manager_node : see self.manager_nose
 # line : The Line of text being displayed
 # voice : See Line.voice
-func say(line, voice):
+func say(manager_node, line, voice):
+	self.manager_node = manager_node
 	set_text(line)
 	self.voice = voice
 	$Timer.start()
@@ -49,7 +55,7 @@ func _input(event):
 func finish():
 	set_visible_characters(0)
 	$Timer.stop()
-	get_parent().advance_dialog()
+	manager_node.advance_dialog()
 
 
 # Called by Timer every tick.

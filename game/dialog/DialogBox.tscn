@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://dialog/dialog_box.png" type="Texture" id=1]
 [ext_resource path="res://dialog/Manager.gd" type="Script" id=2]
 [ext_resource path="res://dialog/Arial Bold.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://dialog/Line.gd" type="Script" id=4]
 [ext_resource path="res://dialog/Options.gd" type="Script" id=5]
+[ext_resource path="res://dialog/DialogOption.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -45,6 +46,8 @@ patch_margin_right = 5
 patch_margin_bottom = 5
 script = ExtResource( 2 )
 _sections_unfolded = [ "Anchor", "Axis Stretch", "Margin", "Patch Margin" ]
+line_node = NodePath("Line")
+options_node = NodePath("Options")
 
 [node name="Line" type="RichTextLabel" parent="DialogBox" index="0"]
 
@@ -105,6 +108,7 @@ scroll_horizontal = 0
 scroll_vertical_enabled = true
 scroll_vertical = 0
 script = ExtResource( 5 )
+dialog_option = ExtResource( 6 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="DialogBox/Options" index="0"]
 
