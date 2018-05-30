@@ -13,9 +13,9 @@ DESTINATION=$VIO_DIR
 DESTINATION+="/assets/sprites/$USER/"
 
 cd "$SOURCE" || exit
-find . -iname '*.ase' -exec cp -r {} $DESTINATION \;
+find . -iname '*.ase' -exec cp -r {} "$DESTINATION" \;
 
 cd "$VIO_DIR" || exit
-git add assets/sprites/$USER/
+git add assets/sprites/"$USER"/
 git commit -m "Changed $USER's assets"
 git push origin master
