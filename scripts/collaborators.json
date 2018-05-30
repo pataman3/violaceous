@@ -1,6 +1,6 @@
 {
   "bryan":{
-    "god_bin":"/home/bryan/documents/projects/godot/Godot__3.0.2_.64",
+    "god_bin":"/usr/bin/godot",
     "ase_bin":"/usr/bin/aseprite",
     "ase_dir":"/home/bryan/documents/projects/rpg/aseprite",
     "vio_dir":"/home/bryan/documents/projects/rpg/violaceous"
