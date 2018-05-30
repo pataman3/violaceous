@@ -1,0 +1,20 @@
+{
+  "bryan":{
+    "god_bin":"/home/bryan/documents/projects/godot/Godot__3.0.2_.64",
+    "ase_bin":"/usr/bin/aseprite",
+    "ase_dir":"/home/bryan/documents/projects/rpg/aseprite",
+    "vio_dir":"/home/bryan/documents/projects/rpg/violaceous"
+  },
+  "peter":{
+    "god_bin":"",
+    "ase_bin":"",
+    "ase_dir":"",
+    "vio_dir":""
+  },
+  "kyle":{
+    "god_bin":"",
+    "ase_bin":"",
+    "ase_dir":"",
+    "vio_dir":""
+  }
+}

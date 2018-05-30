@@ -1,27 +1,29 @@
 #!/bin/bash
 # Creates 2 exported files from source .ase file.
 
-# Aseprite program location (differs per system)
-ASEPRITE=/usr/bin/aseprite
+USER=$(<user.txt)
+
+ASEPRITE="jq -r '.$USER.ase_bin' collaborators.json"
+ASEPRITE=$(eval "$ASEPRITE")
 
 get_filename () {
   echo 'Enter Aseprite filename : '
-  read FILENAME
+  read -r FILENAME
 } # end of get_filename
 get_filetype () {
   echo 'Enter desired filetype : '
-  read FILETYPE
+  read -r FILETYPE
 } # end of get_filetype
 
 for i in "$@"
 do
 case $i in
-    -n=*|--filename=*)
-    FILENAME="${i#*=}"
-    ;;
-    -t=*|--filetype=*)
-    FILETYPE="${i#*=}"
-    ;;
+  -n=*|--filename=*)
+  FILENAME="${i#*=}"
+  ;;
+  -t=*|--filetype=*)
+  FILETYPE="${i#*=}"
+  ;;
 esac
 done
 
@@ -34,12 +36,14 @@ then
   get_filetype
 fi
 
-# Location of Aseprite files (differs per system)
-FILENAME_SOURCE=/home/bryan/documents/projects/rpg/aseprite/${FILENAME}.ase
+FILENAME_SOURCE="jq -r '.$USER.ase_dir' collaborators.json"
+FILENAME_SOURCE=$(eval "$FILENAME_SOURCE")
+FILENAME_SOURCE+="/${FILENAME}.ase"
 
-# Location for exports (differs per system)
-mkdir -p /home/bryan/documents/projects/rpg/aseprite/exports/$FILENAME
-EXPORTS_LOCATION=/home/bryan/documents/projects/rpg/aseprite/exports/$FILENAME
+EXPORTS_LOCATION="jq -r '.$USER.ase_dir' collaborators.json"
+EXPORTS_LOCATION=$(eval "$EXPORTS_LOCATION")
+EXPORTS_LOCATION+="/exports/$FILENAME"
+mkdir -p "$EXPORTS_LOCATION"
 
-$ASEPRITE -b $FILENAME_SOURCE --save-as $EXPORTS_LOCATION/${FILENAME}.$FILETYPE
-$ASEPRITE -b $FILENAME_SOURCE --scale 5 --save-as $EXPORTS_LOCATION/${FILENAME}_discord.$FILETYPE
+"$ASEPRITE" -b "$FILENAME_SOURCE" --save-as "$EXPORTS_LOCATION"/"$FILENAME"."$FILETYPE"
+"$ASEPRITE" -b "$FILENAME_SOURCE" --scale 5 --save-as "$EXPORTS_LOCATION"/"$FILENAME"_discord."$FILETYPE"

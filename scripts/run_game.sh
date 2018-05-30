@@ -1,10 +1,13 @@
 #!/bin/bash
-# pulls and runs the game. this code is used to create a shortcut
-# to the game that runs the latest version. Kyle uses a modified
-# version of the code (different file path to project folder) in
-# his shortcut.
-export PATH=/usr/local/bin:$PATH # may not work in windows/linux
-cd ~/programming/godot/violaceous # unique to peter's mac
-git pull https://github.com/pataman3/violaceous.git
-cd game
-godot
+
+USER=$(<user.txt)
+
+VIO_DIR="jq -r '.$USER.vio_dir' collaborators.json"
+VIO_DIR=$(eval "$VIO_DIR")
+
+cd "$VIO_DIR" || exit
+git pull
+cd game || exit
+GOD_BIN="jq -r '.$USER.god_bin' $VIO_DIR/scripts/collaborators.json"
+GOD_BIN=$(eval "$GOD_BIN")
+( $GOD_BIN )
