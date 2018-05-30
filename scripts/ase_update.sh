@@ -1,9 +1,12 @@
 #!/bin/bash
-# Grabs all .ase files from a source folder and moves them into an assets folder
-# Pushes all .ase files into github
+#
+# Grabs all .ase files from a source and moves them into assets
+# Pushes all .ase files to repository
 
 USER=$(<user.txt)
 
+# TODO(bryan): Using jq and eval makes for a bit of a nasty solution. There's
+#   got to be a better way around this.
 SOURCE="jq -r '.$USER.ase_dir' collaborators.json"
 SOURCE=$(eval "$SOURCE")
 
