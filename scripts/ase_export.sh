@@ -2,8 +2,6 @@
 #
 # Creates 2 exported files from a source .ase file
 
-USER=$(<user.txt)
-
 get_filename () {
   echo 'Enter Aseprite filename : '
   read -r FILENAME
@@ -36,21 +34,14 @@ then
   get_filetype
 fi
 
-# TODO(bryan): Using jq and eval makes for a bit of a nasty solution. There's
-#   got to be a better way around this.
-ASEPRITE="jq -r '.${USER}.ase_bin' collaborators.json"
-ASEPRITE=$(eval "${ASEPRITE}")
-
-FILENAME_SOURCE="jq -r '.${USER}.ase_dir' collaborators.json"
-FILENAME_SOURCE=$(eval "${FILENAME_SOURCE}")
+FILENAME_SOURCE=${ASE_DIR}
 FILENAME_SOURCE+="/${FILENAME}.ase"
 
-EXPORTS_LOCATION="jq -r '.${USER}.ase_dir' collaborators.json"
-EXPORTS_LOCATION=$(eval "${EXPORTS_LOCATION}")
+EXPORTS_LOCATION=${ASE_DIR}
 EXPORTS_LOCATION+="/exports/${FILENAME}"
 mkdir -p "${EXPORTS_LOCATION}"
 
-"${ASEPRITE}" -b "${FILENAME_SOURCE}" --save-as \
+"${ASE_BIN}" -b "${FILENAME_SOURCE}" --save-as \
   "${EXPORTS_LOCATION}"/"${FILENAME}"."${FILETYPE}"
-"${ASEPRITE}" -b "${FILENAME_SOURCE}" --scale 5 --save-as \
+"${ASE_BIN}" -b "${FILENAME_SOURCE}" --scale 5 --save-as \
   "${EXPORTS_LOCATION}"/"${FILENAME}"_discord."${FILETYPE}"
