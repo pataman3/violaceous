@@ -4,12 +4,12 @@
 # Pushes all .ase files to repository
 
 DESTINATION=${VIO_DIR}
-DESTINATION+="/assets/sprites/${USER}/"
+DESTINATION+="/assets/sprites/${COLLABORATOR}/"
 
 cd "${ASE_DIR}" || exit
 find . -iname '*.ase' -exec cp -r {} "${DESTINATION}" \;
 
 cd "${VIO_DIR}" || exit
-git add assets/sprites/"${USER}"/
-git commit -m "Changed ${USER}'s assets"
+git add assets/sprites/"${COLLABORATOR}"/
+git commit -m "Changed ${COLLABORATOR}'s assets"
 git push origin master
