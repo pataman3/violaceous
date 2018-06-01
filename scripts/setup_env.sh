@@ -25,9 +25,6 @@ then
   sed -i "s@export ASE_DIR=.*@export ASE_DIR=${ASE_DIR}@" ~/.bashrc
   sed -i "s@export GOD_BIN=.*@export GOD_BIN=${GOD_BIN}@" ~/.bashrc
   sed -i "s@export VIO_DIR=.*@export VIO_DIR=${VIO_DIR}@" ~/.bashrc
-
-  echo "Successful in updating environment paths. Exiting..."
-  exit 1
 else
   sudo apt-get -yq install jq
 
@@ -53,7 +50,6 @@ else
   echo "export ASE_DIR=${ASE_DIR}" >> ~/.bashrc
   echo "export GOD_BIN=${GOD_BIN}" >> ~/.bashrc
   echo "export VIO_DIR=${VIO_DIR}" >> ~/.bashrc
-
-  echo "Successful in establishing environment paths. Exiting..."
-  exit 1
 fi
+
+echo "Successful in updating environment paths. Exiting..."
