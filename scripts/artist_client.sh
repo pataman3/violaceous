@@ -11,7 +11,10 @@ if [ "$1" = "Update art assets" ]; then
 elif [ "$1" = "Play stable version" ]; then
     ./run_game.sh
 elif [ "$1" = "Play experimental version" ]; then
+    git fetch origin experimental
     git checkout experimental
+    git reset --hard origin/experimental
+    git clean -fd
     ./run_game.sh
 elif [ "$1" = "Check for client updates" ]; then
     exit 0 # since we've already pulled from master, we're all set
