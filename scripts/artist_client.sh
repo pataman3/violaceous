@@ -1,6 +1,13 @@
 # Entrypoint for the artist client GUI
 # Usage: ./artist_client.sh selection
 #        where "selection" is one of the options below
+# To print an error message, print to stderr and exit with a non-zero code. For example:
+# >&2 echo "Assets haven't changed." && exit 1
+
+# The cancel button was selected
+if [ "$1" = "false" ]; then
+    exit 0
+fi
 
 cd "${VIO_DIR}/scripts"
 git checkout master
