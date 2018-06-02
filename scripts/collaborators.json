@@ -6,10 +6,10 @@
     "vio_dir":"/home/bryan/documents/projects/rpg/violaceous"
   },
   "peter":{
-    "ase_bin":"",
-    "ase_dir":"",
-    "god_bin":"",
-    "vio_dir":""
+    "ase_bin":"/Applications/Aseprite.app/Contents/MacOS/aseprite",
+    "ase_dir":"/Users/peter/pixel_art/violaceous",
+    "god_bin":"/usr/local/bin/godot",
+    "vio_dir":"/Users/peter/godot/violaceous"
   },
   "kyle":{
     "ase_bin":"",
