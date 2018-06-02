@@ -7,6 +7,7 @@
 # The cancel button was selected
 if [ "$1" = "false" ]; then
     exit 0
+fi
 
 cd "${VIO_DIR}/scripts"
 git checkout master
