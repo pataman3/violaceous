@@ -2,6 +2,8 @@
 #
 # Establishes a COLLABORATOR's environment paths if they do not exist
 # Updates a COLLABORATOR's environment paths if they exits
+#
+# Requirements: jq
 
 reset
 . ~/.bashrc
@@ -28,8 +30,6 @@ then
 
   echo "Successful in updating environment paths. Exiting..."
 else
-  sudo apt-get -yq install jq
-
   echo "Please enter your name. : "
   read -r COLLABORATOR
   while [ ${COLLABORATOR} != "bryan" ] && [ ${COLLABORATOR} != "peter" ] && \
