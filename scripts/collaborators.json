@@ -1,7 +1,7 @@
 {
   "bryan":{
     "ase_bin":"/usr/bin/aseprite",
-    "ase_dir":"/home/bryan/documents/projects/rpg/aseprite",
+    "ase_dir":"/home/bryan/documents/projects/rpg/aseprite/final",
     "god_bin":"/usr/bin/godot",
     "vio_dir":"/home/bryan/documents/projects/rpg/violaceous"
   },
