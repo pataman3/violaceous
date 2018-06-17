@@ -24,9 +24,10 @@ func input(event, value, pressed):
 	if Controls.get_value(Controls.SPRINT):
 		x_velocity = sign(x_velocity) * SPRINTING_SPEED
 	if pressed and event == Controls.SELECT:
-		var bodies = selection_area.get_overlapping_bodies()
-		if bodies.size() > 0 and bodies[0].has_method('activate'):
-			bodies[0].activate()
+		for body in selection_area.get_overlapping_bodies():
+			if body.is_in_group('select'):
+				body.select()
+				break
 	
 	var anim = null
 	match abs(x_velocity):
