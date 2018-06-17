@@ -72,32 +72,37 @@ func _get_value_keyboard(event):
 
 ## Joystick ##
 
+var threshold = 0.3
+
 # index 0 is for negative axis values, 1 is for positive axis values
 var joystick_to_events = {
 	JOY_AXIS_0: [LEFT, RIGHT]
 }
 
-var event_to_joysticks = {
-	LEFT: [JOY_AXIS_0],
-	RIGHT: [JOY_AXIS_0]
+var event_to_joystick = {
+	LEFT: JOY_AXIS_0,
+	RIGHT: JOY_AXIS_0
 }
+
+func _parse_joypad_motion_helper(axis, axis_value):
+	var index = 0 if axis_value < 0 else 1
+	return [
+		joystick_to_events[axis][index],
+		abs(axis_value) if abs(axis_value) > threshold else 0
+	] if axis in joystick_to_events else null
 
 # event: InputEventJoypadMotion
 func _parse_joypad_motion(event):
-	var index = int((sign(event.axis_value) + 1) / 2)
-	return [
-		joystick_to_events[event.axis][index],
-		abs(event.axis_value)
-	] if event.axis in joystick_to_events else null
+	return _parse_joypad_motion_helper(event.axis, event.axis_value)
 
 # event: one of the event constants
 func _get_value_joypad_motion(event):
-	if not event_to_joysticks.has(event):
+	if not event_to_joystick.has(event):
 		return 0
-	var result = 0
-	for axis in event_to_joysticks[event]:
-		result = max(result, Input.get_joy_axis(0, axis))
-	return result
+	var axis = event_to_joystick[event]
+	var result = _parse_joypad_motion_helper(axis,Input.get_joy_axis(0, axis))
+	return result[1] if result != null and result[0] == event else 0
+
 
 ## Joypad button ##
 
@@ -114,7 +119,7 @@ var event_to_buttons = {
 # event: InputEventJoypadButton
 func _parse_joypad_button(event):
 	return [
-		button_to_event[event.buton_index],
+		button_to_event[event.button_index],
 		int(event.pressed)
 	] if event.button_index in button_to_event else null
 
