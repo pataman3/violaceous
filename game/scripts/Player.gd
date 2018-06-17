@@ -1,6 +1,6 @@
 extends "res://scripts/Character.gd"
 
-var x_velocity = 0
+var x_velocity = 0.0
 
 var JOGGING_SPEED = 0.9
 var SPRINTING_SPEED  = 1.3
@@ -23,7 +23,6 @@ func input(event, value, pressed):
 		Controls.get_value(Controls.LEFT)) * JOGGING_SPEED
 	if Controls.get_value(Controls.SPRINT):
 		x_velocity = sign(x_velocity) * SPRINTING_SPEED
-	
 	if pressed and event == Controls.SELECT:
 		var bodies = selection_area.get_overlapping_bodies()
 		if bodies.size() > 0 and bodies[0].has_method('activate'):
@@ -31,11 +30,11 @@ func input(event, value, pressed):
 	
 	var anim = null
 	match abs(x_velocity):
-		0: anim = 'idle'
-		SPRINTING_SPEED: anim = 'sprint'
-		_: anim = 'jog'
-	#if animator.get_current_animation() != anim:
-		#animator.play(anim)
+		0.0: anim = 'idle'
+		SPRINTING_SPEED: anim = 'run'
+		_: anim = 'run'
+	if animator.get_current_animation() != anim:
+		animator.play(anim)
 	if x_velocity != 0:
 		sprite.set_flip_h(x_velocity < 0)
 
